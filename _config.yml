@@ -5,15 +5,15 @@
 # Site
 title: Bigfish
 subtitle: ''
-description: ''
-keywords:
-author: John Doe
+description: '个人学习网站,记录知识'
+keywords:  笔记
+author: Bigfish
 language: zh
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url:  https://bigfishgithub.github.io
+url:  https://bigfishcoder.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
