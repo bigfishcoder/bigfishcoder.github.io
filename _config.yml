@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url:  https://bigfishhub.github.io
+url:  https://bigfishgithub.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -96,6 +96,6 @@ theme: particlex
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type:  'git'
-  repo:  https://github.com/bigfishgithub/bigfishhub.github.io.git
+  repo:  https://github.com/bigfishgithub/bigfishgithub.io.git
   branch:  main
   message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
