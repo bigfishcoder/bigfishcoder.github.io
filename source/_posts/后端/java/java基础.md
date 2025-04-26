@@ -1,8 +1,15 @@
-###  java基础
-
-记录学习中一些不熟悉的内容
-
-<!-- more -->
+---
+title: "Java 基础教程"
+categories: 
+  - Backend
+  - Java
+tags:
+  - 技术
+  - 后端
+  - 查缺补漏
+  - 基础
+excerpt: 记录学习中一些不熟悉的内容
+---
 
 ## 练习1:杨辉三角
 
