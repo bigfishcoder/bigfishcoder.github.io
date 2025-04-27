@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="个人学习网站,记录知识">
+    <meta name="author" content="Big Fish">
+    
+    <title>
+        
+            java 常见算法 |
+        
+        Big Fish
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/avatar.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"bigfishcoder.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#55efc4","title":"Big Fish","author":"Big Fish","avatar":"/images/avatar.jpg","logo":null,"favicon":"/images/avatar.jpg"},"menu":{"主页":"/ \t\t\t\t\t\t|| fa-solid fa-home","分类":"/categories \t\t\t\t|| fa-solid fa-layer-group","工具":"/tools             \t    || fa-solid fa-tools","归档":"/archives                || fa-solid fa-box-archive","标签":"/tags                    || fa-solid fa-tags"},"first_screen":{"enable":true,"background_img":"/images/bg2.jpg","background_img_dark":"/images/bg.svg","description":null,"hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"tools":[{"category":"聊天 AI","anchorId":"JUU4JTgxJThBJUU1JUE0JUE5JTIwQUk0"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"}]},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+            <a class="site-name border-box" href="/">
+               Big Fish
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                主页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tools"></i>
+                                
+                                工具
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            主页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tools"></i>
+                                </span>
+                            
+                            工具
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        java 常见算法
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Big Fish</span>
+                                
+                                    <span class="author-badge">Lv1</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-04-27 14:06:00</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Sun Apr 27 2025 15:13:22 GMT+0800">2025-04-27 15:13:22</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Backend/">Backend</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/Backend/Java/">Java</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%90%8E%E7%AB%AF/">后端</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%AE%97%E6%B3%95/">算法</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/java/">java</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="一、通用基础"><a href="#一、通用基础" class="headerlink" title="一、通用基础"></a>一、通用基础</h2><ol>
+<li><strong>时间／空间复杂度分析</strong><ul>
+<li>熟练掌握 O(1)、O(log n)、O(n)、O(n log n)、O(n²) 等常见复杂度，并能针对业务场景做权衡。</li>
+</ul>
+</li>
+<li><strong>常见数据结构</strong><ul>
+<li>数组、链表、栈、队列、哈希表（HashMap）、堆（优先队列）、树（尤其是二分搜索树、B-树&#x2F;B+ 树）、图。</li>
+</ul>
+</li>
+<li><strong>排序与查找</strong><ul>
+<li>快速排序、归并排序、堆排序、二分查找，以及在特定场景下的稳定排序（如归并、插入排序）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="时间／空间复杂度分析"><a href="#时间／空间复杂度分析" class="headerlink" title="时间／空间复杂度分析"></a><strong>时间／空间复杂度分析</strong></h3><h4 id="O-1-常数时间"><a href="#O-1-常数时间" class="headerlink" title="O(1) - 常数时间"></a>O(1) - 常数时间</h4><p><strong>含义</strong>：执行时间不随数据量的变化而变化。每次操作都是固定的时间。</p>
+<ul>
+<li><strong>业务推荐</strong>：<ul>
+<li><strong>数组和哈希表查找</strong>：例如在缓存中查找用户信息、通过ID访问数据库记录。</li>
+<li><strong>栈和队列的操作</strong>：例如任务调度系统的入队和出队操作。</li>
+<li><strong>获取当前时间或状态</strong>：例如获取当前的系统时间、获取某个全局状态。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：<ul>
+<li><strong>数据结构操作</strong>：如果你需要在常数时间内完成查找、插入或删除，选择哈希表或数组。</li>
+<li><strong>简单数据访问</strong>：访问数组中的特定位置，或哈希表中某个键值对。</li>
+</ul>
+</li>
+</ul>
+<h4 id="O-log-n-对数时间"><a href="#O-log-n-对数时间" class="headerlink" title="O(log n) - 对数时间"></a><strong>O(log n) - 对数时间</strong></h4><p><strong>含义</strong>：执行时间随着数据量的增加呈对数级别增长，通常出现在<strong>分治</strong>算法中。</p>
+<ul>
+<li><strong>业务推荐</strong>：<ul>
+<li><strong>二分查找</strong>：例如在电商平台中快速查找商品（数据有序时）。</li>
+<li><strong>平衡二叉树操作</strong>：如AVL树、红黑树等，适用于数据库索引、内存中的有序数据结构。</li>
+<li><strong>堆</strong>：如优先队列，适用于任务调度系统，处理具有优先级的任务。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：<ul>
+<li><strong>快速查找</strong>：当数据已经排序时，使用二分查找。</li>
+<li><strong>动态数据存储</strong>：当需要频繁查找、插入、删除有序数据时，使用平衡二叉树。</li>
+<li><strong>调度系统</strong>：任务优先级处理时使用堆。</li>
+</ul>
+</li>
+</ul>
+<h4 id="O-n-线性时间"><a href="#O-n-线性时间" class="headerlink" title="O(n) - 线性时间**"></a>O(n) - 线性时间**</h4><p><strong>含义</strong>：执行时间随着数据量的增大成线性关系。</p>
+<ul>
+<li><strong>业务推荐</strong>：<ul>
+<li><strong>遍历数据</strong>：例如遍历订单列表或用户列表，进行一些统计、修改等操作。</li>
+<li><strong>线性查找</strong>：如在无序数组中查找某个元素。</li>
+<li><strong>数据统计</strong>：如计算总销量、统计订单数量等。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：<ul>
+<li><strong>数据遍历和处理</strong>：如果你需要访问每一个元素并进行处理，选择 O(n) 的算法（如遍历数组、链表等）。</li>
+<li><strong>无序数据查找</strong>：例如在用户列表中查找指定用户。</li>
+</ul>
+</li>
+</ul>
+<h4 id="O-n-log-n-线性对数时间"><a href="#O-n-log-n-线性对数时间" class="headerlink" title="O(n log n) - 线性对数时间"></a><strong>O(n log n) - 线性对数时间</strong></h4><p><strong>含义</strong>：执行时间随着数据量的增加成对数级别增长，通常适用于高效排序或分治算法。</p>
+<ul>
+<li><strong>业务推荐</strong>：<ul>
+<li><strong>高效排序</strong>：如快速排序、归并排序，用于大规模数据的排序（如商品排序、订单排序等）。</li>
+<li><strong>合并操作</strong>：例如将两个有序的数据源合并成一个有序数据。</li>
+<li><strong>图算法</strong>：某些图算法（如 Dijkstra 算法）用 O(n log n) 复杂度处理最短路径问题。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：<ul>
+<li><strong>大规模排序</strong>：当数据量较大时，需要高效的排序算法（如快速排序、归并排序）。</li>
+<li><strong>合并两个数据集</strong>：当需要将两个有序数组或链表合并时，采用合并排序等方法。</li>
+</ul>
+</li>
+</ul>
+<h4 id="O-n²-二次时间"><a href="#O-n²-二次时间" class="headerlink" title="O(n²) - 二次时间"></a><strong>O(n²) - 二次时间</strong></h4><p><strong>含义</strong>：执行时间随着数据量的增加呈二次增长，通常出现在嵌套循环中。</p>
+<ul>
+<li><strong>业务推荐</strong>：<ul>
+<li><strong>暴力排序</strong>：如冒泡排序、插入排序、选择排序，这些算法适用于数据量较小的场景。</li>
+<li><strong>矩阵运算</strong>：如矩阵乘法的传统算法，或二维数组遍历。</li>
+<li><strong>图的邻接矩阵表示</strong>：对于图的操作，如果使用邻接矩阵存储图的边，某些操作（如遍历节点）会导致 O(n²) 时间复杂度。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：<ul>
+<li><strong>小规模数据排序</strong>：当数据量较小（比如少于1000个数据），使用 O(n²) 的暴力算法是可行的。</li>
+<li><strong>二维数据结构操作</strong>：处理二维数组、矩阵时会涉及 O(n²) 时间复杂度。</li>
+</ul>
+</li>
+<li><strong>推荐</strong>：对于大数据量，建议避免 O(n²) 算法，尤其是排序操作，可以考虑 O(n log n) 的高效算法。</li>
+</ul>
+<h4 id="O-n³-三次时间"><a href="#O-n³-三次时间" class="headerlink" title="O(n³) - 三次时间"></a><strong>O(n³) - 三次时间</strong></h4><p><strong>含义</strong>：执行时间随着数据量的增大呈三次增长，通常出现于处理三维数据的场景。</p>
+<ul>
+<li><strong>业务推荐</strong>：<ul>
+<li><strong>三维矩阵计算</strong>：如三维数组的操作或图形处理中的某些算法。</li>
+<li><strong>复杂的图算法</strong>：一些特定的图算法，如果图的规模较小，可能采用三次时间复杂度。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：<ul>
+<li><strong>矩阵运算</strong>：如果需要进行三维矩阵运算，或者涉及到多个嵌套循环的复杂运算时，时间复杂度为 O(n³)。</li>
+<li><strong>全局优化问题</strong>：比如在一些复杂的全局优化问题中，暴力求解可能涉及三重循环，时间复杂度为 O(n³)。</li>
+</ul>
+</li>
+<li><strong>推荐</strong>：尽量避免使用 O(n³) 的算法，尤其是当数据量较大时，考虑是否有优化的解法。</li>
+</ul>
+<h4 id="O-2-n-指数时间"><a href="#O-2-n-指数时间" class="headerlink" title="O(2^n) - 指数时间"></a><strong>O(2^n) - 指数时间</strong></h4><p><strong>含义</strong>：执行时间随着数据规模的增加呈指数增长，通常出现在递归算法中，尤其是穷举型的算法。</p>
+<ul>
+<li><strong>业务推荐</strong>：<ul>
+<li><strong>递归解法</strong>：例如斐波那契数列的递归解法、旅行商问题的暴力解法。</li>
+<li><strong>暴力破解</strong>：在解某些组合优化问题时，穷举所有可能解的情况，时间复杂度为 O(2^n)。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：<ul>
+<li><strong>小规模问题的递归解法</strong>：对于数据量较小的组合优化问题，如求解旅行商问题时，递归穷举可能可行。</li>
+<li><strong>小规模的递归分支问题</strong>：如树形结构的递归遍历等。</li>
+</ul>
+</li>
+<li><strong>推荐</strong>：对于大规模数据，避免使用 O(2^n) 算法。需要优化时，可以考虑使用动态规划、贪心算法等更高效的算法。</li>
+</ul>
+<h4 id="O-n-阶乘时间"><a href="#O-n-阶乘时间" class="headerlink" title="O(n!) - 阶乘时间"></a><strong>O(n!) - 阶乘时间</strong></h4><p><strong>含义</strong>：执行时间随着数据量的增加呈阶乘增长，通常用于处理排列问题。</p>
+<ul>
+<li><strong>业务推荐</strong>：<ul>
+<li><strong>全排列问题</strong>：如生成所有可能的任务调度顺序、排列组合。</li>
+<li><strong>解空间树的遍历</strong>：某些复杂的组合问题，暴力求解需要遍历所有可能的解空间，导致阶乘时间复杂度。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：<ul>
+<li><strong>排列组合问题</strong>：如果你需要列举数据的所有排列、组合，可能会用到 O(n!) 算法。</li>
+<li><strong>小规模优化问题</strong>：例如小规模的任务调度优化问题，需要暴力搜索最优解。</li>
+</ul>
+</li>
+<li><strong>推荐</strong>：对于大规模问题，避免使用 O(n!) 算法。可以使用启发式算法或动态规划来优化解法。</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h4><ul>
+<li><strong>O(1)</strong>：适用于需要快速查找或修改单一元素的场景，如缓存、栈和队列。</li>
+<li><strong>O(log n)</strong>：适用于查找、插入和删除有序数据，推荐使用二分查找、平衡树等。</li>
+<li><strong>O(n)</strong>：适用于遍历数据、进行数据统计等场景，选择线性时间算法。</li>
+<li><strong>O(n log n)</strong>：适用于高效排序、大规模数据处理，推荐使用快速排序、归并排序。</li>
+<li><strong>O(n²)</strong>：适用于小规模数据的暴力算法、二维数据结构处理，避免大数据量时使用。</li>
+<li><strong>O(n³)</strong>：适用于三维数据处理、复杂图算法，但避免大规模数据时使用。</li>
+<li><strong>O(2^n)</strong>：适用于小规模递归解法或暴力破解问题，大规模数据时需要优化。</li>
+<li><strong>O(n!)</strong>：适用于全排列问题、小规模的组合问题，大数据量时不可行。</li>
+</ul>
+<p>通过结合<strong>业务场景</strong>和<strong>算法特点</strong>，你可以根据需求快速找到合适的算法，在项目中做出合理的选择。</p>
+<hr>
+<h2 id="二、前端需关注的算法"><a href="#二、前端需关注的算法" class="headerlink" title="二、前端需关注的算法"></a>二、前端需关注的算法</h2><ol>
+<li><strong>DOM 树&#x2F;虚拟 DOM 差分算法</strong><ul>
+<li>React、Vue 等前端框架的核心，通过递归或键值映射实现最小化的 DOM 更新。</li>
+</ul>
+</li>
+<li><strong>节流（Throttle）与防抖（Debounce）</strong><ul>
+<li>优化高频操作（resize、scroll、input 等）的触发频率，降低渲染压力。</li>
+</ul>
+</li>
+<li><strong>动画与缓动函数（Easing）</strong><ul>
+<li>常见缓动公式（linear、ease-in&#x2F;out、cubic-bezier 等），以及基于 requestAnimationFrame 的帧率控制。</li>
+</ul>
+</li>
+<li><strong>路径查找（可选，用于游戏&#x2F;可视化）</strong><ul>
+<li>A*、Dijkstra 算法，用于前端可视化或游戏中的路径规划。</li>
+</ul>
+</li>
+<li><strong>前端缓存策略</strong><ul>
+<li>LRU（最近最少使用）、LFU（最不常用）缓存淘汰策略，在 Service Worker 或内存缓存中应用。</li>
+</ul>
+</li>
+<li><strong>加密／哈希</strong><ul>
+<li>MD5、SHA 系列（用于数据完整性校验）、Base64（简单编码），以及对称／非对称加密（Web Crypto API）。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="三、后端需掌握的算法"><a href="#三、后端需掌握的算法" class="headerlink" title="三、后端需掌握的算法"></a>三、后端需掌握的算法</h2><ol>
+<li><strong>负载均衡算法</strong><ul>
+<li>轮询（Round Robin）、加权轮询、最少连接、IP Hash，以及一致性哈希（Consistent Hashing，用于分布式缓存如 Redis Cluster）。</li>
+</ul>
+</li>
+<li><strong>缓存淘汰策略</strong><ul>
+<li>LRU、LFU、TTL（时效失效）等，在 Redis、Memcached、CDN 缓存设计中非常重要。</li>
+</ul>
+</li>
+<li><strong>数据库索引与查询优化</strong><ul>
+<li>B+ 树、哈希索引；查询执行计划分析；事务隔离与并发控制（两段锁、MVCC）。</li>
+</ul>
+</li>
+<li><strong>分布式一致性 &amp; 共识算法</strong><ul>
+<li>Paxos、Raft，用于分布式存储系统（Etcd、ZooKeeper）。</li>
+</ul>
+</li>
+<li><strong>消息队列与调度算法</strong><ul>
+<li>优先级队列、延迟队列、轮询调度、工作窃取（Work Stealing）；常见在 Kafka、RabbitMQ、Celery 中应用。</li>
+</ul>
+</li>
+<li><strong>限流与降级</strong><ul>
+<li>漏桶（Leaky Bucket）、令牌桶（Token Bucket），以及基于滑动窗口的计数算法。</li>
+</ul>
+</li>
+<li><strong>加密与安全</strong><ul>
+<li>对称加密（AES）、非对称加密（RSA）、数字签名、TLS 握手流程中的密钥交换算法（DH、ECDH）等。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="四、爬虫（Spider-Crawler）专用算法"><a href="#四、爬虫（Spider-Crawler）专用算法" class="headerlink" title="四、爬虫（Spider&#x2F;Crawler）专用算法"></a>四、爬虫（Spider&#x2F;Crawler）专用算法</h2><ol>
+<li><strong>爬取策略</strong><ul>
+<li>广度优先（BFS）、深度优先（DFS）、优先队列（针对聚焦爬虫，选择性爬取）。</li>
+</ul>
+</li>
+<li><strong>URL 去重与发现</strong><ul>
+<li>哈希（Hash）、布隆过滤器（Bloom Filter）用于海量 URL 的快速去重。</li>
+</ul>
+</li>
+<li><strong>抓取调度与并发控制</strong><ul>
+<li>基于异步（async&#x2F;await）、多线程&#x2F;多进程的任务队列；限速与重试策略。</li>
+</ul>
+</li>
+<li><strong>HTML 解析与数据抽取</strong><ul>
+<li>XPath、CSS Selector、正则表达式，必要时结合 NLP 分词／实体识别（如 jieba、spaCy）。</li>
+</ul>
+</li>
+<li><strong>抗封锁与隐匿策略</strong><ul>
+<li>动态代理池管理、IP 轮换；随机 UA 生成；登录／模拟行为（可选 Selenium 或 Puppeteer）。</li>
+</ul>
+</li>
+<li><strong>内容相似性检测</strong><ul>
+<li>文本 shingling、余弦相似度、MinHash，用于去重或判定改动增量爬取。</li>
+</ul>
+</li>
+</ol>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%90%8E%E7%AB%AF/">后端</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/java/">java</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/04/27/backend/java/java%E5%9F%BA%E7%A1%80/"
+                                   title="Java 基础教程"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Java 基础教程</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E9%80%9A%E7%94%A8%E5%9F%BA%E7%A1%80"><span class="nav-text">一、通用基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%EF%BC%8F%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-text">时间／空间复杂度分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#O-1-%E5%B8%B8%E6%95%B0%E6%97%B6%E9%97%B4"><span class="nav-text">O(1) - 常数时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-log-n-%E5%AF%B9%E6%95%B0%E6%97%B6%E9%97%B4"><span class="nav-text">O(log n) - 对数时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-n-%E7%BA%BF%E6%80%A7%E6%97%B6%E9%97%B4"><span class="nav-text">O(n) - 线性时间**</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-n-log-n-%E7%BA%BF%E6%80%A7%E5%AF%B9%E6%95%B0%E6%97%B6%E9%97%B4"><span class="nav-text">O(n log n) - 线性对数时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-n%C2%B2-%E4%BA%8C%E6%AC%A1%E6%97%B6%E9%97%B4"><span class="nav-text">O(n²) - 二次时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-n%C2%B3-%E4%B8%89%E6%AC%A1%E6%97%B6%E9%97%B4"><span class="nav-text">O(n³) - 三次时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-2-n-%E6%8C%87%E6%95%B0%E6%97%B6%E9%97%B4"><span class="nav-text">O(2^n) - 指数时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-n-%E9%98%B6%E4%B9%98%E6%97%B6%E9%97%B4"><span class="nav-text">O(n!) - 阶乘时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%89%8D%E7%AB%AF%E9%9C%80%E5%85%B3%E6%B3%A8%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-text">二、前端需关注的算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%90%8E%E7%AB%AF%E9%9C%80%E6%8E%8C%E6%8F%A1%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-text">三、后端需掌握的算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%88%AC%E8%99%AB%EF%BC%88Spider-Crawler%EF%BC%89%E4%B8%93%E7%94%A8%E7%AE%97%E6%B3%95"><span class="nav-text">四、爬虫（Spider&#x2F;Crawler）专用算法</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Big Fish</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E9%80%9A%E7%94%A8%E5%9F%BA%E7%A1%80"><span class="nav-text">一、通用基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%EF%BC%8F%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-text">时间／空间复杂度分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#O-1-%E5%B8%B8%E6%95%B0%E6%97%B6%E9%97%B4"><span class="nav-text">O(1) - 常数时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-log-n-%E5%AF%B9%E6%95%B0%E6%97%B6%E9%97%B4"><span class="nav-text">O(log n) - 对数时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-n-%E7%BA%BF%E6%80%A7%E6%97%B6%E9%97%B4"><span class="nav-text">O(n) - 线性时间**</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-n-log-n-%E7%BA%BF%E6%80%A7%E5%AF%B9%E6%95%B0%E6%97%B6%E9%97%B4"><span class="nav-text">O(n log n) - 线性对数时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-n%C2%B2-%E4%BA%8C%E6%AC%A1%E6%97%B6%E9%97%B4"><span class="nav-text">O(n²) - 二次时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-n%C2%B3-%E4%B8%89%E6%AC%A1%E6%97%B6%E9%97%B4"><span class="nav-text">O(n³) - 三次时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-2-n-%E6%8C%87%E6%95%B0%E6%97%B6%E9%97%B4"><span class="nav-text">O(2^n) - 指数时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-n-%E9%98%B6%E4%B9%98%E6%97%B6%E9%97%B4"><span class="nav-text">O(n!) - 阶乘时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%89%8D%E7%AB%AF%E9%9C%80%E5%85%B3%E6%B3%A8%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-text">二、前端需关注的算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%90%8E%E7%AB%AF%E9%9C%80%E6%8E%8C%E6%8F%A1%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-text">三、后端需掌握的算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%88%AC%E8%99%AB%EF%BC%88Spider-Crawler%EF%BC%89%E4%B8%93%E7%94%A8%E7%AE%97%E6%B3%95"><span class="nav-text">四、爬虫（Spider&#x2F;Crawler）专用算法</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/lazyload.min.js"></script>
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@7.1.2/dist/mermaid.min.js"></script>
+
+    <script data-pjax>
+      if (window.mermaid) {
+        mermaid.init()
+      }
+    </script>
+
+
+
+
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</body>
+</html>
