@@ -9,12 +9,12 @@ tags:
   - 查缺补漏
   - 基础
 excerpt: 记录学习中一些不熟悉的内容
+
 ---
 
 ## 练习1:杨辉三角
 
 ```java
-
 import java.util.Arrays;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -120,7 +120,9 @@ Random seededRandom = new Random(123L); // 指定种子
 | `nextBoolean()`      | `boolean` | `true` 或 `false`    |
 | `nextLong()`         | `long`    | 所有可能的 `long` 值 |
 
-## 练习2:创建一个长度为6的int型数组，要求数组元素的值都在1-30之间， 且是随机赋值。同时，要求元素的值各不相同。
+## 练习2:随机赋值
+
+创建一个长度为6的int型数组，要求数组元素的值都在1-30之间， 且是随机赋值。同时，要求元素的值各不相同。
 
 ```java
 int[] arr = new int[6];
@@ -135,7 +137,7 @@ for(int i = 0; i < arr.length; i++){
 }
 ```
 
-### 练习3:遍历扑克牌 
+##  练习3:遍历扑克牌 
 
 ```java
 import java.util.Arrays;
@@ -169,4 +171,226 @@ public class Main {
     }
 }
 ```
+
+## 练习4: 螺旋矩阵
+
+### 思路分析
+
+`1. 螺旋矩阵的特点`
+
+螺旋矩阵是指数字从外向内顺时针螺旋排列方阵.
+
+我们来拿4 * 4的方阵举例
+
+```java
+1 → 2 → 3 → 4
+           ↓
+12 →13 →14  5
+↑        ↓  ↓
+11  16 ←15  6
+↑           ↓
+10 ←9 ←8 ←  7
+```
+
+`2. 实现思路`
+
+我们采用"边界收缩法"来实现
+
+- 定义四个边界 top, bottom, left, right
+- 按照"上边 -> 右边 -> 下边 -> 左边"的顺序来填充
+- 每填充完一条边,对应的边界像内搜索
+- 重复此过程直到所有数字填完
+
+1. 我们先来定义一个nxn的二维数组来存放数据
+
+```java
+n = 4
+int num = 1;
+int[][] arr = new int[n][n]
+```
+
+2. 我们来定义4条边界
+
+```java
+int top = 0, bottom = n -1, left = 0, right = n -1
+```
+
+top = 0 代表上边界的第0行
+
+bottom = 0 代表下边界的 最后一行
+
+left = 0  代表左边界的第 0 列
+
+right = n -1 代表 右边的最后一列
+
+3. 定义循环控制条件
+
+```java
+  while (num <= n * n) {}
+```
+
+4. 从左向右填充
+
+```java
+for(int i = left; i <= right;i++){
+  		arr[left][i] = num++;
+}
+  	top++
+```
+
+此时我们就完成了从左到右的填充
+
+```
+[
+
+​	[1, 2, 3, 4],
+
+​   [0, 0, 0, 0], ←  top++ 将移动到这行
+
+​   [0, 0, 0, 0],
+
+​   [0, 0, 0, 0]
+
+]
+
+top++ 
+```
+
+5. 从上到下填充
+
+```java
+for(int i = top; i <= bottom;i++){
+  		arr[i][right] = num++;
+  	}
+right--
+```
+
+此时就完成了从上到下的填充
+
+```
+[
+
+​	[1, 2, 3, 4],
+
+​   [0, 0, 0, 5], 
+
+​   [0, 0, 0, 6],
+
+​   [0, 0, 0, 7]
+		   ↑ 
+		   right-- 此时就指向了这一列
+]
+
+
+```
+
+6. 从右到左填充
+
+```java
+for(int i = right; i >= left; i--){
+     arr[bottom][i] = num++;
+}
+bottom--;
+```
+
+此时就完成了从右到左的填充
+
+```
+[
+
+​		                     [1, 2, 3, 4],
+
+​  		                     [0, 0, 0, 5], 
+
+​  bottom--之后指向的位置     → [0, 0, 0, 6],
+  
+​                            [10, 9, 8, 7]
+
+]
+
+```
+
+7. 从下到上填充
+
+```
+for(int i = bottom; i >= top; i--){
+     arr[i][left] = num++;
+}
+left++;
+```
+
+此时就填充完了一圈
+
+```
+[
+
+​		[1, 2, 3, 4],
+             ↓ 此时的left ++  
+
+​  		[12, 0, 0, 5], 
+
+​ 		[11, 0, 0, 6],
+  
+​       [10, 9, 8, 7]
+
+]
+
+
+```
+
+在填充 n轮后 到达 边界检测条件后就完成了填充 
+
+```java
+  while (num <= n * n) {}
+```
+
+`完整代码`
+
+```java
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        int n = 4;
+        int[][] arr = new int[n][n];
+        int num = 1;
+        int top = 0, bottom = n - 1, left = 0, right = n - 1;
+
+        while (num <= n * n) {
+            for (int i = left; i <= right; i++) {
+                arr[top][i] = num++;
+            }
+            top++;
+
+            for (int i = top; i <= bottom; i++) {
+                arr[i][right] = num++;
+            }
+            right--;
+
+            for (int i = right; i >= left; i--) {
+                arr[bottom][i] = num++;
+            }
+            bottom--;
+
+            for (int i = bottom; i >= top; i--) {
+                arr[i][left] = num++;
+            }
+            left++;
+
+        }
+    }
+}
+
+```
+
+*这套实现方法有局限性只能 做固定起点、固定顺时针的矩阵填充,不能做动态方向/中心扩展/不规则矩阵/变化版螺旋布局*
+
+### 第二套实现方案
+
+方向数组 + 步长控制
+
+
+
+
 
